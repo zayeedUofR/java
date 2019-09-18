@@ -1,0 +1,22 @@
+#Thu Sep 27 10:47:22 CDT 2018
+alertID=10402
+alertText=Vecima Networks HAS ISSUED A REQUIRED WEEKLY TEST FOR THE FOLLOWING COUNTIES/AREAS: Pinal, AZ; AT 12:13 PM ON SEP 17, 2018 EFFECTIVE UNTIL 12:28 PM. MESSAGE FROM Vecima. 
+srcIP=10.1.2.147
+srcPort=32769
+dstIP=239.5.150.150
+dstPort=5050
+multicastTtl=20
+alertMessageDuplicateCount=2
+additionalStartDelay=0
+alertDuration=120
+alertPriority=15
+isInBandEnabled=false
+detailsMajorChannelNumber=0
+detailsMinorChannelNumber=0
+detailsAudioOobId=7905
+detailsVideoOobId=7905
+exceptionChannelList=enabled
+inBandExceptionList=116-2 115-12 79-1 116-1
+oobExceptionList=7927 7926 7776 7779 7773 7767 7764 7759 7782 7785 7788 2027 2030 7904 7907 2023 2060 6018 6020 2078 6023 6024 2035 6026 2052 6028 2074
+easAlertCode=RWT
+locations=004021

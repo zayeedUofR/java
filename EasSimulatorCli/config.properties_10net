@@ -1,0 +1,24 @@
+#Thu Sep 27 10:47:22 CDT 2018
+alertID = 10508
+#alertText=Vecima Networks HAS ISSUED A REQUIRED WEEKLY TEST FOR THE FOLLOWING COUNTIES/AREAS: Pinal; Maricopa, AZ; Alpine, CA; AT 4:39 PM ON OCT 4, 2018 EFFECTIVE UNTIL 4:54 PM. MESSAGE FROM Vecima. 
+srcIP = 10.1.2.147
+srcPort = 32769
+dstIP = 239.13.2.254
+dstPort = 5050
+multicastTtl = 20
+alertMessageDuplicateCount = 2
+additionalStartDelay = 0
+alertMessageTimeRemaining = 60
+alertPriority = 15
+eventDuration = 15
+isInBandEnabled = true
+detailsMajorChannelNumber = 132
+detailsMinorChannelNumber = 2
+detailsAudioOobId = 7905
+detailsVideoOobId = 7905
+exceptionChannelList = enabled
+inBandExceptionList = 116-2 115-1 79-1 116-2
+oobExceptionList = 2012 2059 2076 2079 5022 5023 5024 5042 5063 7744 7754 7759 7760 7764 7767 7768 7776 7782 7785 7788 7907 7910 7913 7916 7917 7918 7920 7921 7922 7924 7925 7926 7927 7928 7933 9165
+easAlertCode = TOR
+locations = 004021 004013 006003 000000 006000 006007 002000 002068 010000 025000 012000 008000
+outOfBandPID = disabled
