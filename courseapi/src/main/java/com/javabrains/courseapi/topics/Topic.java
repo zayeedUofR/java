@@ -1,16 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.javabrains.courseapi.topics;
+
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
- * @author zayee
+ * @author zayeed
  */
-public class Topic {
+@Entity
+public class Topic implements Serializable {
     
+    @Id
     private String id;
     private String name;
     private String description;
