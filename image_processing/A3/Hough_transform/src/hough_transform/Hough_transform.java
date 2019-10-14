@@ -1,3 +1,5 @@
+package hough_transform;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;

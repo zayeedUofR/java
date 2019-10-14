@@ -1,2 +1,0 @@
-medianfilter.Raw_To_Jpg
-medianfilter.MedianFilter

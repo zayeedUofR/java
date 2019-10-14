@@ -1,2 +1,0 @@
-sobeloperator.SobelOperator
-sobeloperator.Raw_To_Jpg
