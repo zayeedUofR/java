@@ -1,0 +1,2 @@
+histogramequilization.Raw_To_Jpg
+histogramequilization.HistogramEquilization
