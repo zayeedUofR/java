@@ -15,13 +15,15 @@ import javax.imageio.ImageIO;
 /**
  *
  * @author Zayeed
+ * This program takes an input of RGB image summer_deck.bmp with improper intensity distribution.
+ * The image is processed as follows:
+ * 1. Converts the RGB pixels to HSI using given formula
+ * 2. Applies Histogram Equalization on HSI values using given formula
+ * 3. Converts the HSI back to RGB
+ * 4. writes the output image
  */
 public class RGB_to_HSI_to_RGB {
 
-    /**
-     * @param img
-     * @return
-     */
     public static int height, width, type;
 
     public RGB_to_HSI_to_RGB(int h, int w, int t) {
@@ -56,7 +58,7 @@ public class RGB_to_HSI_to_RGB {
                 blue = new Color(img.getRGB(i, j)).getBlue();
 
                 //System.out.println("A: "+alpha+" R: "+red+" G: "+green+" B: "+blue);
-                hsi = convert_RGB_to_HSI(red, green, blue);
+                hsi = RGB_to_HSI(red, green, blue);
                 A[i][j] = alpha;
                 H[i][j] = hsi.get(0);
                 S[i][j] = hsi.get(1);
@@ -76,10 +78,9 @@ public class RGB_to_HSI_to_RGB {
 
         //converting the HSI values to RGB and writing output image
         HSI_to_RGB(A, H, S, I);
-
     }
 
-    public static ArrayList<Double> convert_RGB_to_HSI(int R, int G, int B) {
+    public static ArrayList<Double> RGB_to_HSI(int R, int G, int B) {
 
         ArrayList<Double> hsi;
         hsi = new ArrayList<>();
@@ -119,7 +120,6 @@ public class RGB_to_HSI_to_RGB {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 intensityH[(int) I[i][j]]++; //count frequencies
-
             }
         }
 
@@ -134,9 +134,7 @@ public class RGB_to_HSI_to_RGB {
         for (int i = 0; i < 256; i++) {
             arr[i] = (float) ((chistogram[i] * 255.0) / (float) (height * width));
         }
-
         return arr;
-
     }
 
     public static void HSI_to_RGB(double[][] A, double[][] H, double[][] S, double[][] I) throws IOException {  //final call 
@@ -199,16 +197,13 @@ public class RGB_to_HSI_to_RGB {
 
                 // Write pixels into image
                 nImage.setRGB(m, n, rgb);
-
             }
         }
 
         //write image file
         File outputfile = new File("RGB2HSI_problem_2_outputImage.bmp");
         ImageIO.write(nImage, "bmp", outputfile);
-
         System.out.println("The image summer_deck.bmp was converted from RGB to HSI, and then applied Histogram Equilization\non Intensity I. Finally HSI values were converted back to RGB to save the image as RGB2HSI_problem_2_outputImage.bmp. \nThe conversion formula used are described in report.");
-
     }
 
     public static void main(String[] args) throws IOException {
@@ -219,7 +214,6 @@ public class RGB_to_HSI_to_RGB {
         RGB_to_HSI_to_RGB ob;
         ob = new RGB_to_HSI_to_RGB(image.getHeight(), image.getWidth(), image.getType());
         RGB_to_HSI_to_RGB.rgb_pixels(image);
-        //ob.convert_RGB_to_HSI(100, 150, 200);
-
+        //ob.RGB_to_HSI(100, 150, 200);
     }
 }
