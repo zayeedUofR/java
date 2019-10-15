@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package laplaciansharpening;
 
 import java.awt.image.BufferedImage;
@@ -19,7 +14,6 @@ import javax.imageio.ImageIO;
  *
  * @author Zayeed
  */
-
 class Raw_To_Jpg {
 
     void convert_raw() throws IOException {
@@ -48,6 +42,7 @@ public class LaplacianSharpening {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
@@ -59,7 +54,7 @@ public class LaplacianSharpening {
 
         int[][] result = imageTo2DArray(inputImage); //pass buffered image to the method and get back the result
 
-        int ROWS = result.length; // height
+        int ROWS = result.length;    // height
         int COLS = result[0].length; //width 
 
         int[][] new_img = new int[ROWS + 2][COLS + 2]; //to add zeros outside the boundary pixels;
@@ -88,26 +83,24 @@ public class LaplacianSharpening {
         double w2 = 0.5;
         double w3 = 0.25;
         double w4 = 0.15;
-
-        double[][] HL
-                = { //Laplace
-                    {0.0, 1, 0.0},
+        
+        //Laplace kernel
+        final double[][] HL
+                = { 
+                    {0.0, 1.0, 0.0},
                     {1.0, -4.0, 1.0},
                     {0.0, 1.0, 0.0}
                 };
 
         // apply filter
-        for (int u = 1; u <= ROWS + 2 - 2; u++) { // boundary are 0s
-            for (int v = 1; v <= COLS + 2 - 2; v++) { // boundary are 0s
+        for (int u = 1; u <= ROWS + 2 - 2; u++) {     // boundaries are 0s
+            for (int v = 1; v <= COLS + 2 - 2; v++) { // boundaries are 0s
                 int sum = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
-                        //System.out.println("Width: " +width+ "H = "+ height );
                         int p = new_img[u + i][v + j];
-                        //int p = result[v+j][u+i];
                         double c = HL[j + 1][i + 1];
                         sum += c * p;
-                        // System.out.println("P = " +p);
                     }
                 }
                 int q = Math.round(Math.abs(sum));
@@ -128,7 +121,6 @@ public class LaplacianSharpening {
         int width = output_img[0].length;
         int height = output_img.length;
 
-        //System.out.println("H: "+height+" W: "+width);
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
         WritableRaster wr = img.getRaster();
 
@@ -186,12 +178,9 @@ public class LaplacianSharpening {
         final int height = inputImage.getHeight(); //get image height value
         int[][] result = new int[height][width]; //Initialize the array with height and width
 
-        // System.out.println("H: "+height+" W: "+width);
         //this loop allocates pixels value to two dimensional array
-        //int c = 0;
         for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel++) {
-            int argb = 0;
-            argb = (int) pixels[pixel];
+            int argb = (int) pixels[pixel];
             if (argb < 0) { //if pixel value is negative, change to positive 
                 argb += 256;
             }
@@ -202,8 +191,6 @@ public class LaplacianSharpening {
                 row++;
             }
         }
-
-        return result; //return the result as two dimensional array
+        return result; //returns the result as two dimensional array
     }
-
 }
